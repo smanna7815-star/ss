@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <title>একটা কথা বলি…</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      font-family: 'Noto Serif Bengali', serif;
+      text-align: center;
+      color: #4a1c2a;
+    }
+    .box {
+      background: rgba(255,255,255,0.9);
+      padding: 25px;
+      border-radius: 15px;
+      width: 85%;
+      max-width: 400px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      animation: fade 0.6s ease;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 22px;
+      border: none;
+      border-radius: 20px;
+      background: #e75480;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    @keyframes fade {
+      from {opacity: 0; transform: translateY(15px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
+    .name {
+      margin-top: 15px;
+      font-size: 14px;
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+<div class="box" id="text">
+  একটা কথা বলি?  
+  <br>মন দিয়ে পড়ো…
+</div>
+
+<script>
+  const steps = [
+`কেন এই লুকোচুরি,<br>
+কি কারণে জানি না—<br>
+কাছে যেতে চাই,<br>
+তবু কেন যেতে পারি না…`,
+
+`বলো না গো, কার ভুলেতে<br>
+দেখা তুমি চাও না দিতে—`,
+
+`বলো কবে দু’টি মন হবে একাকার,<br>
+ছুঁয়ে যাবে এই সুর হৃদয়ে তোমার—`
+  ];
+
+  let i = -1;
+  const box = document.getElementById("text");
+
+  box.addEventListener("click", () => {
+    i++;
+    if (i < steps.length) {
+      box.innerHTML = steps[i] + `<div class="name">— </div>
+      <button>আবার ট্যাপ করো</button>`;
+    }
+  });
+</script>
+
+</body>
+</html>
