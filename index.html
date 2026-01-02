@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>একটা কথা বলি…</title>
+
   <style>
     body {
       margin: 0;
@@ -15,55 +16,85 @@
       text-align: center;
       color: #4a1c2a;
     }
+
     .box {
-      background: rgba(255,255,255,0.9);
-      padding: 25px;
-      border-radius: 15px;
-      width: 85%;
-      max-width: 400px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      animation: fade 0.6s ease;
-    }
-    button {
-      margin-top: 20px;
-      padding: 10px 22px;
-      border: none;
+      background: rgba(255,255,255,0.95);
+      padding: 30px;
       border-radius: 20px;
+      width: 95%;
+      max-width: 700px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      animation: fade 0.8s ease;
+    }
+
+    .msg {
+      font-size: clamp(40px, 7vw, 85px);
+      font-weight: bold;
+      line-height: 1.35;
+      animation: fade 0.8s ease;
+    }
+
+    button {
+      margin-top: 50px;
+      padding: 25px 45px;
+      border: none;
+      border-radius: 40px;
       background: #e75480;
       color: white;
-      font-size: 16px;
+      font-size: clamp(22px, 4vw, 45px);
       cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
     }
-    @keyframes fade {
-      from {opacity: 0; transform: translateY(15px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
+
     .name {
-      margin-top: 15px;
-      font-size: 14px;
-      opacity: 0.8;
+      margin-top: 25px;
+      font-size: clamp(18px, 3vw, 32px);
+      opacity: 0.85;
+    }
+
+    video {
+      width: 100%;
+      height: auto;
+      border-radius: 18px;
+      animation: fade 1s ease;
+    }
+
+    @keyframes fade {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
+
 <body>
 
 <div class="box" id="text">
-  একটা কথা বলি?  
-  <br>মন দিয়ে পড়ো…
+  <div class="msg">
+    একটা কথা বলি?<br>
+    মন দিয়ে পড়ো…
+  </div>
 </div>
 
 <script>
   const steps = [
-`কেন এই লুকোচুরি,
-কি কারণে জানি না—
-কাছে যেতে চাই,
+
+`কেন এই লুকোচুরি,<br>
+কি কারণে জানি না—<br>
+কাছে যেতে চাই,<br>
 তবু কেন যেতে পারি না…`,
 
-`বলো না গো, কার ভুলেতে
+`বলো না গো, কার ভুলেতে<br>
 দেখা তুমি চাও না দিতে—`,
 
-`বলো কবে দু’টি মন হবে একাকার,
+`বলো কবে দু’টি মন হবে একাকার,<br>
 ছুঁয়ে যাবে এই সুর হৃদয়ে তোমার—`
+
   ];
 
   let i = -1;
@@ -73,22 +104,21 @@
     i++;
 
     if (i < steps.length) {
-      box.innerHTML = steps[i] + `
-      <div class="name">— তোমারই কেউ</div>
-      <button>আবার ট্যাপ করো</button>`;
-    } 
-    else {
       box.innerHTML = `
-      <video controls autoplay style="width:100%; border-radius:12px;">
-        <source src="video.mp4" type="video/mp4">
-        Your browser does not support video.
-      </video>
-      <div class="name">এইটা শুধু তোমার জন্য 🤍</div>`;
+        <div class="msg">${steps[i]}</div>
+        <div class="name">— তোমারই কেউ</div>
+        <button>আবার ট্যাপ করো</button>
+      `;
+    } else {
+      box.innerHTML = `
+        <video autoplay controls playsinline>
+          <source src="video.mp4" type="video/mp4">
+        </video>
+        <div class="name"> 🤍</div>
+      `;
     }
   });
 </script>
 
-
 </body>
 </html>
-
